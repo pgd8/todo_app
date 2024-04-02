@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:todo/Shared_Components/add_task_form.dart';
 import 'package:todo/Tabs/settings_tab.dart';
 import 'package:todo/Tabs/tasks_tab.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = 'HomeScreen';
@@ -31,11 +32,13 @@ class _HomeScreenState extends State<HomeScreen> {
               index = value;
               setState(() {});
             },
-            items: const [
+            items: [
               BottomNavigationBarItem(
-                  icon: Icon(Icons.task_rounded), label: 'Tasks'),
+                  icon: const Icon(Icons.task_rounded),
+                  label: AppLocalizations.of(context)!.tasks),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.settings), label: 'Tasks'),
+                  icon: const Icon(Icons.settings),
+                  label: AppLocalizations.of(context)!.settings),
             ]),
       ),
       floatingActionButton: FloatingActionButton(

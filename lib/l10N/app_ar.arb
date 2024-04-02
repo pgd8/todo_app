@@ -1,0 +1,15 @@
+{
+  "appName" : "ToDo",
+  "done" : "تم",
+  "add" : "إضافة",
+  "edit" : "تعديل",
+  "delete" : "حذف",
+  "addTask" : "إضافة مهمة جديدة",
+  "tasks" : "المهام",
+  "settings" : "الإعدادات",
+  "title" : "العنوان",
+  "description" : "الوصف",
+  "selectDate": "إختر التاريخ",
+  "assTask" : "إضافة المهمة"
+
+}
