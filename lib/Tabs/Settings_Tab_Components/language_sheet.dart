@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-import 'package:todo/My_App/my_theme.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:todo/Providers/my_provider.dart';
 
 class LanguageSheet extends StatelessWidget {
@@ -14,7 +14,7 @@ class LanguageSheet extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text("Language"),
+          Text(AppLocalizations.of(context)!.language),
           Container(
             width: double.infinity,
             margin: EdgeInsets.symmetric(horizontal: 0.05.sw, vertical: 0.01.sh),
@@ -46,7 +46,7 @@ class LanguageSheet extends StatelessWidget {
                   provider.changeLanguage("ar");
                 },
                 child: Text(
-                  "Arabic",
+                  "عربي",
                   style: TextStyle(
                       color: provider.languageCode == "ar"
                           ? Colors.white

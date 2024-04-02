@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:todo/Tabs/Settings_Tab_Components/language_sheet.dart';
 import 'package:todo/Tabs/Settings_Tab_Components/theme_mode_sheet.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SettingsTab extends StatelessWidget {
   @override
@@ -17,7 +18,9 @@ class SettingsTab extends StatelessWidget {
           SizedBox(
             height: 0.04.sh,
           ),
-          Text("Change App Language"),
+          Text(
+            AppLocalizations.of(context)!.changeLanguage,
+          ),
           TextButton(
             onPressed: () {
               showModalBottomSheet(
@@ -28,13 +31,13 @@ class SettingsTab extends StatelessWidget {
               );
             },
             child: Text(
-              "choose",
+              AppLocalizations.of(context)!.choose,
               style: TextStyle(
                 color: Colors.blue.shade700,
               ),
             ),
           ),
-          Text("Change App Theme"),
+          Text(AppLocalizations.of(context)!.changeMode),
           TextButton(
             onPressed: () {
               showModalBottomSheet(
@@ -45,7 +48,7 @@ class SettingsTab extends StatelessWidget {
               );
             },
             child: Text(
-              "choose",
+              AppLocalizations.of(context)!.choose,
               style: TextStyle(
                 color: Colors.blue.shade700,
               ),

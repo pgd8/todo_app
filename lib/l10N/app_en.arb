@@ -10,6 +10,10 @@
   "title" : "Title",
   "description" : "Description",
   "selectDate": "Select Date",
-  "addTask" : "Add Task"
+  "addTask" : "Add Task",
+  "changeLanguage" : "Change Language",
+  "changeMode" : "Change Mode",
+  "choose" : "Choose",
+  "language" : "Language"
 
 }
