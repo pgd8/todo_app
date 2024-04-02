@@ -4,16 +4,21 @@ import 'package:flutter/material.dart';
 import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
+import 'package:todo/Providers/my_provider.dart';
 
 class TasksTab extends StatelessWidget {
-  var selectedDate = DateTime.now();
+  final selectedDate = DateTime.now();
 
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(context, designSize: const Size(360, 690));
+    var provider = Provider.of<MyProvider>(context);
     return Column(
       children: [
         DatePicker(
+          locale: provider.languageCode,
           DateTime.now(),
           initialSelectedDate: DateTime.now(),
           dateTextStyle: TextStyle(
@@ -35,12 +40,12 @@ class TasksTab extends StatelessWidget {
           decoration: BoxDecoration(
               color: Colors.white, borderRadius: BorderRadius.circular(25.r)),
           child: Slidable(
-            startActionPane: ActionPane(motion: DrawerMotion(), children: [
+            startActionPane: ActionPane(motion: const DrawerMotion(), children: [
               SlidableAction(
                 backgroundColor: Colors.red,
                 icon: Icons.delete,
                 onPressed: (context) {},
-                label: "Delete",
+                label: AppLocalizations.of(context)!.delete,
                 borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(25.r),
                     topLeft: Radius.circular(25.r)),
@@ -49,28 +54,28 @@ class TasksTab extends StatelessWidget {
                 onPressed: (context) {},
                 icon: Icons.edit,
                 backgroundColor: Colors.blue.shade700,
-                label: "Edit",
+                label: AppLocalizations.of(context)!.edit,
               ),
             ]),
             child: ListTile(
               title: Text(
-                "Title",
+                AppLocalizations.of(context)!.title,
                 style: TextStyle(fontSize: 14.sp),
               ),
               trailing: Container(
                 padding: EdgeInsets.symmetric(
                     horizontal: 0.05.sw, vertical: 0.01.sh),
-                child: Icon(
-                  Icons.done,
-                  color: Colors.white,
-                ),
                 decoration: BoxDecoration(
                     color: Colors.blue.shade700,
                     shape: BoxShape.rectangle,
                     borderRadius: BorderRadius.circular(18.r)),
+                child: const Icon(
+                  Icons.done,
+                  color: Colors.white,
+                ),
               ),
               subtitle: Text(
-                "description",
+                AppLocalizations.of(context)!.description,
                 style: TextStyle(fontSize: 11.sp),
               ),
               leading: Container(

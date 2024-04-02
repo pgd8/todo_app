@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:todo/Shared_Components/field_label.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AddTaskForm extends StatefulWidget {
   @override
@@ -31,9 +32,9 @@ class _AddTaskFormState extends State<AddTaskForm> {
             Container(
               margin:
                   EdgeInsets.symmetric(horizontal: 0.01.sw, vertical: 0.01.sh),
-              child: const Text(
-                'Add New Task',
-                style: TextStyle(fontWeight: FontWeight.bold),
+              child: Text(
+                AppLocalizations.of(context)!.addNewTask,
+                style: const TextStyle(fontWeight: FontWeight.bold),
               ),
             ),
             Container(
@@ -51,10 +52,10 @@ class _AddTaskFormState extends State<AddTaskForm> {
                 decoration: InputDecoration(
                     isDense: true,
                     errorStyle: TextStyle(fontSize: 11.sp),
-                    label: FieldLabel('Task Title'),
+                    label: FieldLabel(AppLocalizations.of(context)!.title),
                     errorBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20.r),
-                        borderSide: BorderSide(color: Colors.red)),
+                        borderSide: const BorderSide(color: Colors.red)),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20.r),
                     )),
@@ -75,10 +76,11 @@ class _AddTaskFormState extends State<AddTaskForm> {
                 decoration: InputDecoration(
                     errorStyle: TextStyle(fontSize: 10.sp),
                     isDense: true,
-                    label: FieldLabel('Task Description'),
+                    label:
+                        FieldLabel(AppLocalizations.of(context)!.description),
                     errorBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20.r),
-                        borderSide: BorderSide(color: Colors.red)),
+                        borderSide: const BorderSide(color: Colors.red)),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20.r),
                     )),
@@ -88,7 +90,7 @@ class _AddTaskFormState extends State<AddTaskForm> {
               margin: EdgeInsets.only(top: 0.01.sh, left: 0.03.sw),
               alignment: Alignment.centerLeft,
               child: Text(
-                'select date',
+                AppLocalizations.of(context)!.selectDate,
                 style: TextStyle(fontSize: 10.sp),
               ),
             ),
@@ -111,9 +113,9 @@ class _AddTaskFormState extends State<AddTaskForm> {
                   onPressed: () {
                     if (formKey.currentState!.validate()) {}
                   },
-                  child: const Text(
-                    'Add Task',
-                    style: TextStyle(color: Colors.white),
+                  child: Text(
+                    AppLocalizations.of(context)!.addTask,
+                    style: const TextStyle(color: Colors.white),
                   )),
             ),
           ],
@@ -132,9 +134,7 @@ class _AddTaskFormState extends State<AddTaskForm> {
     );
     if (chosenDate != null) {
       selectedDate = chosenDate;
-      setState(() {
-
-      });
+      setState(() {});
     }
   }
 }

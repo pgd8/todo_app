@@ -4,12 +4,12 @@
   "add" : "Add",
   "edit" : "Edit",
   "delete" : "Delete",
-  "addTask" : "Add New Task",
+  "addNewTask" : "Add New Task",
   "tasks" : "Tasks",
   "settings" : "Settings",
   "title" : "Title",
   "description" : "Description",
   "selectDate": "Select Date",
-  "assTask" : "Add Task"
+  "addTask" : "Add Task"
 
 }

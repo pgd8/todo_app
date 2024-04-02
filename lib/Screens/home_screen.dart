@@ -22,7 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
     ScreenUtil.init(context, designSize: const Size(360, 690));
     return Scaffold(
       appBar: AppBar(
-        title: const Text('ToDo'),
+        title: const Text('ToDo',textDirection: TextDirection.ltr,),
       ),
       bottomNavigationBar: BottomAppBar(
         notchMargin: 0.01.sh,

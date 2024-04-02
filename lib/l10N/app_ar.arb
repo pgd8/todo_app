@@ -4,12 +4,12 @@
   "add" : "إضافة",
   "edit" : "تعديل",
   "delete" : "حذف",
-  "addTask" : "إضافة مهمة جديدة",
+  "addNewTask" : "إضافة مهمة جديدة",
   "tasks" : "المهام",
   "settings" : "الإعدادات",
   "title" : "العنوان",
   "description" : "الوصف",
   "selectDate": "إختر التاريخ",
-  "assTask" : "إضافة المهمة"
+  "addTask" : "إضافة المهمة"
 
 }
