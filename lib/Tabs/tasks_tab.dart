@@ -17,23 +17,31 @@ class TasksTab extends StatelessWidget {
     var provider = Provider.of<MyProvider>(context);
     return Column(
       children: [
-        DatePicker(
-          locale: provider.languageCode,
-          DateTime.now(),
-          initialSelectedDate: DateTime.now(),
-          dateTextStyle: TextStyle(
-            fontSize: 8.sp,
-          ),
-          dayTextStyle: TextStyle(
-            fontSize: 7.sp,
-          ),
-          monthTextStyle: TextStyle(
-            fontSize: 9.sp,
-            fontWeight: FontWeight.w500,
-          ),
-          daysCount: 365,
-          selectionColor: Colors.blue.shade700,
-          onDateChange: (date) {},
+        Stack(
+          children: [
+            Container(
+              color: Colors.blue.shade700,
+              height: 0.06.sh,
+            ),
+            DatePicker(
+              locale: provider.languageCode,
+              DateTime.now(),
+              initialSelectedDate: DateTime.now(),
+              dateTextStyle: TextStyle(
+                fontSize: 8.sp,
+              ),
+              dayTextStyle: TextStyle(
+                fontSize: 7.sp,
+              ),
+              monthTextStyle: TextStyle(
+                fontSize: 9.sp,
+                fontWeight: FontWeight.w500,
+              ),
+              daysCount: 365,
+              selectionColor: Colors.blue.shade700,
+              onDateChange: (date) {},
+            ),
+          ],
         ),
         Container(
           margin: EdgeInsets.symmetric(horizontal: 0.03.sw, vertical: 0.03.sh),
