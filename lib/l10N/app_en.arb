@@ -13,7 +13,11 @@
   "addTask" : "Add Task",
   "changeLanguage" : "Change Language",
   "changeMode" : "Change Mode",
+  "mode" : "mode",
+  "dark" : "Dark",
+  "light" : "Light",
   "choose" : "Choose",
-  "language" : "Language"
-
+  "language" : "Language",
+  "titleError" : "Pleas enter the task title",
+  "descriptionError" : "Pleas enter the task description"
 }

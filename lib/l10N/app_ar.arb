@@ -13,6 +13,11 @@
   "addTask" : "إضافة المهمة",
   "changeLanguage" : "تغيير اللغة",
   "changeMode" : "تغيير الوضع",
+  "mode" : "وضع التطبيق",
+  "dark" : "داكن",
+  "light" : "ساطع",
   "choose" : "إختر",
-  "language" : "اللغة"
+  "language" : "اللغة",
+  "titleError" : "برجاء إدخال عنوان المهمة",
+  "descriptionError" : "برجاء إدخال وصف المهمة"
 }

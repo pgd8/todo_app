@@ -45,7 +45,7 @@ class _AddTaskFormState extends State<AddTaskForm> {
                 controller: taskTitle,
                 validator: (value) {
                   if (value == null || value == '') {
-                    return "Pleas enter the task title";
+                    return AppLocalizations.of(context)!.titleError;
                   }
                 },
                 style: TextStyle(fontSize: 12.sp, color: Colors.black),
@@ -69,7 +69,7 @@ class _AddTaskFormState extends State<AddTaskForm> {
                 controller: taskDescription,
                 validator: (value) {
                   if (value == null || value == '') {
-                    return "Pleas enter the task description";
+                    return AppLocalizations.of(context)!.descriptionError;
                   }
                 },
                 style: TextStyle(fontSize: 12.sp, color: Colors.black),

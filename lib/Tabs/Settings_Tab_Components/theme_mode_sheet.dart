@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-import 'package:todo/My_App/my_theme.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:todo/Providers/my_provider.dart';
 
 class ThemeModeSheet extends StatelessWidget {
@@ -14,7 +14,7 @@ class ThemeModeSheet extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text("mode"),
+          Text(AppLocalizations.of(context)!.mode),
           Container(
             width: double.infinity,
             margin:
@@ -28,7 +28,7 @@ class ThemeModeSheet extends StatelessWidget {
                   provider.changeMode(ThemeMode.light);
                 },
                 child: Text(
-                  "Light",
+                  AppLocalizations.of(context)!.light,
                   style: TextStyle(
                       color: provider.mode == ThemeMode.light
                           ? Colors.white
@@ -48,7 +48,7 @@ class ThemeModeSheet extends StatelessWidget {
                   provider.changeMode(ThemeMode.dark);
                 },
                 child: Text(
-                  "Dark",
+                  AppLocalizations.of(context)!.dark,
                   style: TextStyle(
                       color: provider.mode == ThemeMode.dark
                           ? Colors.white
