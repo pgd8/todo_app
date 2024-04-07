@@ -9,6 +9,7 @@ import 'package:provider/provider.dart';
 import 'package:todo/DataModules/taskModel.dart';
 import 'package:todo/Firebase/firebase_functions.dart';
 import 'package:todo/Providers/my_provider.dart';
+import 'package:todo/Shared_Components/progress_indicator.dart';
 
 class TasksTab extends StatelessWidget {
   final selectedDate = DateTime.now();
@@ -51,7 +52,7 @@ class TasksTab extends StatelessWidget {
             List<TaskModel> tasksLists =
                 snapshot.data!.docs.map((e) => e.data()).toList();
             if(snapshot.connectionState == ConnectionState.waiting){
-              return CircularProgressIndicator();
+              return CProgressIndicator();
             }
             return Expanded(
               child: ListView.builder(
