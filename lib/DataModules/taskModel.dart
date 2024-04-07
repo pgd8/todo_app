@@ -14,29 +14,19 @@ class TaskModel {
 
   TaskModel.fromJson(Map<String, dynamic> json)
       : this(
-            id: json['id'],
-            title: json['title'],
-            description: json['description'],
-            isDone: json['isDone'],
-            date: json['date']);
-
-  // method to return an object we replaced it with the named constructor because it takes a map and return an object
-  TaskModel fromJson(Map<String, dynamic> json) {
-    return TaskModel(
-        id: json['id'],
-        title: json['title'],
-        description: json['description'],
-        isDone: json['isDone'],
-        date: json['date']);
-  }
+            id: json['ID'],
+            title: json['Title'],
+            description: json['Description'],
+            isDone: json['IsDone'],
+            date: json['Date']);
 
   Map<String, dynamic> toJson() {
     return {
-      "id": id,
-      "title": title,
-      "description": description,
-      "isDone": isDone,
-      "date": date
+      "ID": id,
+      "Title": title,
+      "Description": description,
+      "IsDone": isDone,
+      "Date": date
     };
   }
 }

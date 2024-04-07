@@ -1,24 +1,27 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:todo/DataModules/taskModel.dart';
 
-class FirebaseFunctions {
-  FirebaseFirestore fireStore = FirebaseFirestore.instance;
-
-  //to add tasks to the fireStore
-  void addTask() {
-    fireStore.collection("Tasks").withConverter(
-      fromFirestore: (snapshot, _) {
-        return TaskModel.fromJson(snapshot.data()!);
-      },
-      toFirestore: (value, _) {
-        return value.toJson();
-      },
-    );
+class FirebaseFunction {
+  static CollectionReference<TaskModel> getTasksCollection() {
+    return FirebaseFirestore.instance
+        .collection("Tasks")
+        .withConverter<TaskModel>(
+            fromFirestore: (snapshot, _) =>
+                TaskModel.fromJson(snapshot.data()!),
+            toFirestore: (value, _) => value.toJson());
   }
 
-  void getTask() {}
+  static Future<void> addTask(TaskModel task) {
+    var collection = getTasksCollection();
+    var docRef = collection.doc();
+    task.id = docRef.id;
+   return docRef.set(task);
+  }
 
-  void editTask() {}
+  static Future<QuerySnapshot<TaskModel>> getTask() {
+    var collection = getTasksCollection();
+   return collection.get();
+  }
 
-  void deleteTask() {}
+
 }

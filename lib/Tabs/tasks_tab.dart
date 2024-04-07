@@ -6,6 +6,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
+import 'package:todo/DataModules/taskModel.dart';
+import 'package:todo/Firebase/firebase_functions.dart';
 import 'package:todo/Providers/my_provider.dart';
 
 class TasksTab extends StatelessWidget {
@@ -43,55 +45,71 @@ class TasksTab extends StatelessWidget {
             ),
           ],
         ),
-        Container(
-          margin: EdgeInsets.symmetric(horizontal: 0.03.sw, vertical: 0.03.sh),
-          decoration: BoxDecoration(
-              color: Colors.white, borderRadius: BorderRadius.circular(25.r)),
-          child: Slidable(
-            startActionPane: ActionPane(motion: const DrawerMotion(), children: [
-              SlidableAction(
-                backgroundColor: Colors.red,
-                icon: Icons.delete,
-                onPressed: (context) {},
-                label: AppLocalizations.of(context)!.delete,
-                borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(25.r),
-                    topLeft: Radius.circular(25.r)),
+        FutureBuilder(
+          future: FirebaseFunction.getTask(),
+          builder: (context, snapshot) {
+            List<TaskModel> tasksLists =
+                snapshot.data!.docs.map((e) => e.data()).toList();
+            if(snapshot.connectionState == ConnectionState.waiting){
+              return CircularProgressIndicator();
+            }
+            return Expanded(
+              child: ListView.builder(
+                itemCount: tasksLists.length,
+                  itemBuilder: (context, index) =>  Container(
+                      margin:
+                      EdgeInsets.symmetric(horizontal: 0.03.sw, vertical: 0.03.sh),
+                      decoration: BoxDecoration(
+                          color: Colors.white, borderRadius: BorderRadius.circular(25.r)),
+                      child: Slidable(
+                        startActionPane:
+                        ActionPane(motion: const DrawerMotion(), children: [
+                          SlidableAction(
+                            backgroundColor: Colors.red,
+                            icon: Icons.delete,
+                            onPressed: (context) {},
+                            label: AppLocalizations.of(context)!.delete,
+                            borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(25.r),
+                                topLeft: Radius.circular(25.r)),
+                          ),
+                          SlidableAction(
+                            onPressed: (context) {},
+                            icon: Icons.edit,
+                            backgroundColor: Colors.blue.shade700,
+                            label: AppLocalizations.of(context)!.edit,
+                          ),
+                        ]),
+                        child: ListTile(
+                          title: Text(
+                            tasksLists[index].title,
+                            style: TextStyle(fontSize: 14.sp),
+                          ),
+                          trailing: Container(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 0.05.sw, vertical: 0.01.sh),
+                            decoration: BoxDecoration(
+                                color: Colors.blue.shade700,
+                                shape: BoxShape.rectangle,
+                                borderRadius: BorderRadius.circular(18.r)),
+                            child: const Icon(
+                              Icons.done,
+                              color: Colors.white,
+                            ),
+                          ),
+                          subtitle: Text(
+                            tasksLists[index].description,
+                            style: TextStyle(fontSize: 11.sp),
+                          ),
+                          leading: Container(
+                            color: Colors.blue,
+                            width: 0.007.sw,
+                          ),
+                        ),
+                      )),
               ),
-              SlidableAction(
-                onPressed: (context) {},
-                icon: Icons.edit,
-                backgroundColor: Colors.blue.shade700,
-                label: AppLocalizations.of(context)!.edit,
-              ),
-            ]),
-            child: ListTile(
-              title: Text(
-                AppLocalizations.of(context)!.title,
-                style: TextStyle(fontSize: 14.sp),
-              ),
-              trailing: Container(
-                padding: EdgeInsets.symmetric(
-                    horizontal: 0.05.sw, vertical: 0.01.sh),
-                decoration: BoxDecoration(
-                    color: Colors.blue.shade700,
-                    shape: BoxShape.rectangle,
-                    borderRadius: BorderRadius.circular(18.r)),
-                child: const Icon(
-                  Icons.done,
-                  color: Colors.white,
-                ),
-              ),
-              subtitle: Text(
-                AppLocalizations.of(context)!.description,
-                style: TextStyle(fontSize: 11.sp),
-              ),
-              leading: Container(
-                color: Colors.blue,
-                width: 0.007.sw,
-              ),
-            ),
-          ),
+            );
+          },
         ),
       ],
     );

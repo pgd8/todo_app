@@ -1,6 +1,8 @@
 // ignore_for_file: use_key_in_widget_constructors
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:todo/DataModules/taskModel.dart';
+import 'package:todo/Firebase/firebase_functions.dart';
 import 'package:todo/Shared_Components/field_label.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -111,7 +113,14 @@ class _AddTaskFormState extends State<AddTaskForm> {
               margin: EdgeInsets.only(bottom: 0.011.sh),
               child: ElevatedButton(
                   onPressed: () {
-                    if (formKey.currentState!.validate()) {}
+                    if (formKey.currentState!.validate()) {
+                      FirebaseFunction.addTask(
+                        TaskModel(
+                            title: taskTitle.text,
+                            description: taskDescription.text,
+                            date: selectedDate.millisecondsSinceEpoch)
+                      );
+                    }
                   },
                   child: Text(
                     AppLocalizations.of(context)!.addTask,
