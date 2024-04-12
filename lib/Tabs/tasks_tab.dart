@@ -18,7 +18,7 @@ class TasksTab extends StatefulWidget {
 }
 
 class TasksTabState extends State<TasksTab> {
-  final selectedDate = DateTime.now();
+   var selectedDate = DateTime.now();
   static List<TaskModel> tasksLists = [];
 
   @override
@@ -50,12 +50,15 @@ class TasksTabState extends State<TasksTab> {
               ),
               daysCount: 365,
               selectionColor: Colors.blue.shade700,
-              onDateChange: (date) {},
+              onDateChange: (date) {
+                selectedDate = date;
+                setState(() {});
+              },
             ),
           ],
         ),
         StreamBuilder(
-          stream: FirebaseFunction.getTask(),
+          stream: FirebaseFunction.getTask(selectedDate),
           builder: (context, snapshot) {
             List<TaskModel> tasksLists =
                 snapshot.data!.docs.map((e) => e.data()).toList();

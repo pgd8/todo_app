@@ -118,7 +118,7 @@ class _AddTaskFormState extends State<AddTaskForm> {
                         TaskModel(
                             title: taskTitle.text,
                             description: taskDescription.text,
-                            date: selectedDate.millisecondsSinceEpoch)
+                            date: DateUtils.dateOnly(selectedDate).millisecondsSinceEpoch)
                       );
                       setState(() {});
                       Navigator.pop(context);
