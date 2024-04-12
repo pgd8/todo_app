@@ -24,8 +24,9 @@ class FirebaseFunction {
     return collection.get();
   }
 
-  static editTask(String id,TaskModel newTask) {
+  static editTask(String id, TaskModel newTask) {
     var collection = getTasksCollection();
+    newTask.id = collection.doc().id;
     collection.doc(id).set(newTask);
   }
 
