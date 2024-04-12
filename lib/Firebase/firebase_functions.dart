@@ -19,15 +19,15 @@ class FirebaseFunction {
     return docRef.set(task);
   }
 
-  static Future<QuerySnapshot<TaskModel>> getTask() {
+  static Stream<QuerySnapshot<TaskModel>> getTask() {
     var collection = getTasksCollection();
-    return collection.get();
+    return collection.snapshots();
   }
 
-  static editTask(String id, TaskModel newTask) {
+  static Future<void> editTask(String id, TaskModel newTask) {
     var collection = getTasksCollection();
     newTask.id = collection.doc().id;
-    collection.doc(id).set(newTask);
+    return collection.doc(id).set(newTask);
   }
 
   static void deleteTask(String id) {

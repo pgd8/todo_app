@@ -54,83 +54,90 @@ class TasksTabState extends State<TasksTab> {
             ),
           ],
         ),
-        FutureBuilder(
-          future: FirebaseFunction.getTask(),
+        StreamBuilder(
+          stream: FirebaseFunction.getTask(),
           builder: (context, snapshot) {
             List<TaskModel> tasksLists =
                 snapshot.data!.docs.map((e) => e.data()).toList();
-            if(snapshot.connectionState == ConnectionState.waiting){
+            if (snapshot.connectionState == ConnectionState.waiting) {
               return CProgressIndicator();
             }
+
+            if (tasksLists.isEmpty) {
+              return Center(
+                child: Text("There is No Tasks"),
+              );
+            }
+
             return Expanded(
               child: ListView.builder(
                 itemCount: tasksLists.length,
-                  itemBuilder: (context, index) =>  Container(
-                      margin:
-                      EdgeInsets.symmetric(horizontal: 0.03.sw, vertical: 0.03.sh),
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(25.r)),
-                      child: Slidable(
-                        startActionPane:
-                            ActionPane(motion: const DrawerMotion(), children: [
-                          SlidableAction(
-                            backgroundColor: Colors.red,
-                            icon: Icons.delete,
-                            onPressed: (context) {
-                              FirebaseFunction.deleteTask(tasksLists[index].id);
-                              setState(() {});
-                            },
-                            label: AppLocalizations.of(context)!.delete,
-                            borderRadius: BorderRadius.only(
-                                bottomLeft: Radius.circular(25.r),
-                                topLeft: Radius.circular(25.r)),
-                          ),
-                          SlidableAction(
-                            onPressed: (context) {
-                              Navigator.pushNamed(
-                                context,
-                                EditScreen.routeName,
-                                arguments: tasksLists[index],
-                              );
-                            },
-                            icon: Icons.edit,
-                            backgroundColor: Colors.blue.shade700,
-                            label: AppLocalizations.of(context)!.edit,
-                          ),
-                        ]),
-                        child: ListTile(
-                          title: Text(
-                            tasksLists[index].title,
-                            style: TextStyle(fontSize: 14.sp),
-                          ),
-                          trailing: Container(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 0.05.sw, vertical: 0.01.sh),
-                            decoration: BoxDecoration(
-                                color: Colors.blue.shade700,
-                                shape: BoxShape.rectangle,
-                                borderRadius: BorderRadius.circular(18.r)),
-                            child: const Icon(
-                              Icons.done,
-                              color: Colors.white,
-                            ),
-                          ),
-                          subtitle: Text(
-                            tasksLists[index].description,
-                            style: TextStyle(fontSize: 11.sp),
-                          ),
-                          leading: Container(
-                            color: Colors.blue,
-                            width: 0.007.sw,
+                itemBuilder: (context, index) => Container(
+                    margin: EdgeInsets.symmetric(
+                        horizontal: 0.03.sw, vertical: 0.03.sh),
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(25.r)),
+                    child: Slidable(
+                      startActionPane:
+                          ActionPane(motion: const DrawerMotion(), children: [
+                        SlidableAction(
+                          backgroundColor: Colors.red,
+                          icon: Icons.delete,
+                          onPressed: (context) {
+                            FirebaseFunction.deleteTask(tasksLists[index].id);
+                            setState(() {});
+                          },
+                          label: AppLocalizations.of(context)!.delete,
+                          borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(25.r),
+                              topLeft: Radius.circular(25.r)),
+                        ),
+                        SlidableAction(
+                          onPressed: (context) {
+                            Navigator.pushNamed(
+                              context,
+                              EditScreen.routeName,
+                              arguments: tasksLists[index],
+                            );
+                          },
+                          icon: Icons.edit,
+                          backgroundColor: Colors.blue.shade700,
+                          label: AppLocalizations.of(context)!.edit,
+                        ),
+                      ]),
+                      child: ListTile(
+                        title: Text(
+                          tasksLists[index].title,
+                          style: TextStyle(fontSize: 14.sp),
+                        ),
+                        trailing: Container(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 0.05.sw, vertical: 0.01.sh),
+                          decoration: BoxDecoration(
+                              color: Colors.blue.shade700,
+                              shape: BoxShape.rectangle,
+                              borderRadius: BorderRadius.circular(18.r)),
+                          child: const Icon(
+                            Icons.done,
+                            color: Colors.white,
                           ),
                         ),
-                      )),
-                ),
-              );
-            },
-          ),
-        ],
+                        subtitle: Text(
+                          tasksLists[index].description,
+                          style: TextStyle(fontSize: 11.sp),
+                        ),
+                        leading: Container(
+                          color: Colors.blue,
+                          width: 0.007.sw,
+                        ),
+                      ),
+                    )),
+              ),
+            );
+          },
+        ),
+      ],
     );
   }
 }
