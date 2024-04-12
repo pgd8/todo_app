@@ -5,6 +5,7 @@ class MyTheme {
       primaryColor: Colors.blue.shade700,
       scaffoldBackgroundColor: const Color(0xffDFECDB),
       appBarTheme: AppBarTheme(
+          iconTheme: IconThemeData(color: Colors.white),
           backgroundColor: Colors.blue.shade700,
           titleTextStyle: const TextStyle(
               color: Colors.white,

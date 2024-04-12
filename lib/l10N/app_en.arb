@@ -19,5 +19,7 @@
   "choose" : "Choose",
   "language" : "Language",
   "titleError" : "Pleas enter the task title",
-  "descriptionError" : "Pleas enter the task description"
+  "descriptionError" : "Pleas enter the task description",
+  "submit" : "Submit",
+  "editYourTask" : "Edit Your Task"
 }

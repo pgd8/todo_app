@@ -120,6 +120,8 @@ class _AddTaskFormState extends State<AddTaskForm> {
                             description: taskDescription.text,
                             date: selectedDate.millisecondsSinceEpoch)
                       );
+                      setState(() {});
+                      Navigator.pop(context);
                     }
                   },
                   child: Text(

@@ -19,5 +19,9 @@
   "choose" : "إختر",
   "language" : "اللغة",
   "titleError" : "برجاء إدخال عنوان المهمة",
-  "descriptionError" : "برجاء إدخال وصف المهمة"
+  "descriptionError" : "برجاء إدخال وصف المهمة",
+  "submit" : "تأكيد",
+  "editYourTask" : "قم بتعدسل المهمة"
+
+
 }

@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:todo/My_App/my_theme.dart';
 import 'package:todo/Providers/my_provider.dart';
+import 'package:todo/Screens/edit_screen.dart';
 import 'package:todo/Screens/home_screen.dart';
 import 'package:todo/Screens/splash_screen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -32,7 +33,8 @@ class MyApp extends StatelessWidget {
               initialRoute: SplashScreen.routeName,
               routes: {
                 SplashScreen.routeName: (context) => SplashScreen(),
-                HomeScreen.routeName: (context) => HomeScreen()
+                HomeScreen.routeName: (context) => HomeScreen(),
+                EditScreen.routeName : (context) => EditScreen(),
               },
             );
           },
