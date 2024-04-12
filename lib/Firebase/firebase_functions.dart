@@ -23,7 +23,9 @@ class FirebaseFunction {
   static Stream<QuerySnapshot<TaskModel>> getTask(DateTime date) {
     var collection = getTasksCollection();
     return collection
-        .where("Date", isEqualTo: DateUtils.dateOnly(date).millisecondsSinceEpoch)
+        .where("Date",
+            isEqualTo: DateUtils.dateOnly(date).millisecondsSinceEpoch)
+        .orderBy("Title")
         .snapshots();
   }
 
